@@ -74,6 +74,24 @@
       background: #f4f8e9;
     }
 
+    .artwork-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .artwork-wrap svg.is-hidden { visibility: hidden; }
+    .reveal-grid {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      pointer-events: none;
+    }
+    .reveal-tile {
+      background: #e8f1dc;
+      animation: pixel-reveal .7s steps(1, end) forwards;
+    }
+    @keyframes pixel-reveal { to { opacity: 0; } }
+
     .scene svg {
       display: block;
       width: 100%;
@@ -154,6 +172,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal-tile { display: none; }
     }
   </style>
 </head>
@@ -165,7 +184,8 @@
 
     <div class="scene">
       <!-- Pixel-art scene: cherry tree, meadow, and a little sheep -->
-      <svg viewBox="0 0 320 190" role="img" aria-label="Un cerezo pixelado junto a una ovejita en un prado">
+      <div class="artwork-wrap">
+      <svg class="is-hidden" viewBox="0 0 320 190" role="img" aria-label="Un cerezo pixelado junto a una ovejita en un prado" aria-hidden="true">
         <rect width="320" height="190" fill="#e8f1dc"/>
         <!-- clouds -->
         <g fill="#fffaf2">
@@ -238,6 +258,7 @@
         </g>
         <g fill="#e8b94d"><rect x="148" y="148" width="6" height="6"/><rect x="272" y="148" width="6" height="6"/></g>
       </svg>
+      </div>
     </div>
 
     <p class="message">Esto se dibuja solo si Cherrybe sonríe. 🍒</p>
@@ -257,19 +278,59 @@
   <script>
     const button = document.getElementById("surpriseButton");
     const surprise = document.getElementById("surprise");
+    const artwork = document.querySelector(".artwork-wrap svg");
+    const artworkWrap = document.querySelector(".artwork-wrap");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let hasRevealed = false;
 
-    button.addEventListener("click", () => {
-      surprise.textContent = "Compilación exitosa: una sonrisa de Cherrybe_ detectada. 🍒🐑";
+    function revealArtwork() {
+      artwork.classList.remove("is-hidden");
+      artwork.setAttribute("aria-hidden", "false");
+      if (reduceMotion.matches) return;
+
+      const columns = 20;
+      const rows = 12;
+      const grid = document.createElement("div");
+      grid.className = "reveal-grid";
+      grid.setAttribute("aria-hidden", "true");
+      grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+      grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+      for (let i = 0; i < columns * rows; i++) {
+        const tile = document.createElement("span");
+        tile.className = "reveal-tile";
+        tile.style.animationDelay = `${Math.random() * 650}ms`;
+        tile.addEventListener("animationend", () => tile.remove(), { once: true });
+        grid.appendChild(tile);
+      }
+      artworkWrap.appendChild(grid);
+      window.setTimeout(() => grid.remove(), 1600);
+    }
+
+    function showerCherries() {
+      surprise.textContent = "Múltiples sonrisas detectadas. 🍒🐑";
       for (let i = 0; i < 18; i++) {
         const cherry = document.createElement("span");
         cherry.className = "floating-cherry";
+        cherry.setAttribute("aria-hidden", "true");
         cherry.textContent = Math.random() > 0.35 ? "🍒" : "✦";
         cherry.style.left = Math.random() * 100 + "vw";
         cherry.style.animationDelay = Math.random() * 0.8 + "s";
         cherry.style.fontSize = (16 + Math.random() * 16) + "px";
         document.body.appendChild(cherry);
-        cherry.addEventListener("animationend", () => cherry.remove());
+        cherry.addEventListener("animationend", () => cherry.remove(), { once: true });
+        window.setTimeout(() => cherry.remove(), 4000);
       }
+    }
+
+    button.addEventListener("click", () => {
+      if (!hasRevealed) {
+        hasRevealed = true;
+        revealArtwork();
+        button.textContent = "Otra vez 🍒";
+        surprise.textContent = "Se ha detectado una sonrisa. 🍒";
+        return;
+      }
+      showerCherries();
     });
   </script>
 </body>
