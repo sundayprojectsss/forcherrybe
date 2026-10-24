@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff5f5">
+  <title>Para Cherry B 🍒</title>
+  <style>
+    :root {
+      --pink: #f7c8d0;
+      --rose: #d94f70;
+      --red: #c93655;
+      --cream: #fffaf2;
+      --ink: #45313b;
+      --green: #557b59;
+      --pixel: 4px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px 14px;
+      color: var(--ink);
+      font-family: "Courier New", monospace;
+      background:
+        radial-gradient(circle at 12% 18%, #ffffff 0 2px, transparent 3px),
+        radial-gradient(circle at 82% 24%, #ffffff 0 2px, transparent 3px),
+        linear-gradient(145deg, #fff0f2, #fce4e8 48%, #fff7ec);
+      background-size: 70px 70px, 90px 90px, auto;
+    }
+
+    .card {
+      width: min(100%, 650px);
+      position: relative;
+      padding: clamp(22px, 5vw, 42px);
+      background: var(--cream);
+      border: 4px solid var(--ink);
+      box-shadow: 8px 8px 0 #d995a5;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--rose);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(27px, 6vw, 42px);
+      line-height: 1.15;
+      letter-spacing: -2px;
+    }
+
+    .subtitle {
+      margin: 12px auto 20px;
+      max-width: 430px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .scene {
+      margin: 0 auto 22px;
+      max-width: 440px;
+      padding: 12px;
+      border: 3px dashed #e6a2b0;
+      background: #f4f8e9;
+    }
+
+    .scene svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      image-rendering: pixelated;
+    }
+
+    .message {
+      margin: 18px auto;
+      max-width: 480px;
+      font-size: clamp(17px, 3.8vw, 21px);
+      font-weight: bold;
+      line-height: 1.6;
+    }
+
+    .code-note {
+      display: inline-block;
+      margin: 2px auto 18px;
+      padding: 12px 14px;
+      max-width: 100%;
+      text-align: left;
+      color: #fdf3f5;
+      background: #392d3a;
+      border: 3px solid #392d3a;
+      box-shadow: 4px 4px 0 #e7b0bb;
+      font-size: 13px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .code-comment { color: #f3a8bb; }
+    .code-keyword { color: #c7e7a4; }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      padding: 13px 18px;
+      border: 3px solid var(--ink);
+      border-radius: 0;
+      background: #f7c8d0;
+      color: var(--ink);
+      font: bold 13px "Courier New", monospace;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 var(--ink);
+      transition: transform .12s, box-shadow .12s;
+    }
+
+    button:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+    button:focus-visible { outline: 3px solid var(--rose); outline-offset: 5px; }
+
+    #surprise {
+      min-height: 28px;
+      margin: 20px 0 0;
+      color: var(--red);
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: bold;
+    }
+
+    .footer {
+      margin: 25px 0 0;
+      color: #8b737e;
+      font-size: 11px;
+    }
+
+    .floating-cherry {
+      position: fixed;
+      top: -30px;
+      z-index: 5;
+      pointer-events: none;
+      font-size: 22px;
+      animation: fall 2.8s linear forwards;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); opacity: .15; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <p class="eyebrow">✦ un pequeño detalle ✦</p>
+    <h1>Para Cherry B <span aria-hidden="true">🍒</span></h1>
+    <p class="subtitle">Una mini escena hecha de píxeles, porque a veces los detalles pequeños dicen mucho.</p>
+
+    <div class="scene">
+      <!-- Pixel-art scene: cherry tree, meadow, and a little sheep -->
+      <svg viewBox="0 0 320 190" role="img" aria-label="Un cerezo pixelado junto a una ovejita en un prado">
+        <rect width="320" height="190" fill="#e8f1dc"/>
+        <!-- clouds -->
+        <g fill="#fffaf2">
+          <rect x="28" y="22" width="28" height="8"/><rect x="36" y="14" width="14" height="8"/>
+          <rect x="225" y="35" width="36" height="8"/><rect x="235" y="27" width="16" height="8"/>
+        </g>
+        <!-- distant hills -->
+        <path d="M0 116 L42 84 L80 116 L125 76 L178 116 L228 88 L275 116 L320 96 V190 H0Z" fill="#c9dfb9"/>
+        <!-- cherry tree trunk -->
+        <rect x="68" y="74" width="16" height="76" fill="#8a573e"/>
+        <rect x="60" y="96" width="8" height="20" fill="#8a573e"/>
+        <rect x="84" y="108" width="8" height="20" fill="#8a573e"/>
+        <!-- pixel canopy -->
+        <g fill="#f5a4b6">
+          <rect x="38" y="42" width="28" height="20"/><rect x="54" y="26" width="32" height="24"/>
+          <rect x="78" y="34" width="30" height="26"/><rect x="30" y="58" width="34" height="20"/>
+          <rect x="58" y="54" width="38" height="24"/><rect x="88" y="58" width="28" height="18"/>
+        </g>
+        <g fill="#d94f70">
+          <rect x="48" y="46" width="8" height="8"/><rect x="72" y="34" width="8" height="8"/>
+          <rect x="94" y="50" width="8" height="8"/><rect x="38" y="62" width="8" height="8"/>
+          <rect x="80" y="66" width="8" height="8"/>
+        </g>
+        <g fill="#bde0a8">
+          <rect x="46" y="34" width="8" height="8"/><rect x="86" y="42" width="8" height="8"/>
+          <rect x="62" y="62" width="8" height="8"/>
+        </g>
+        <!-- hanging cherries -->
+        <g stroke="#557b59" stroke-width="2" fill="none">
+          <path d="M55 66 v9 M101 64 v8 M75 48 v8"/>
+        </g>
+        <g fill="#c93655">
+          <rect x="50" y="72" width="8" height="8"/><rect x="58" y="76" width="8" height="8"/>
+          <rect x="96" y="70" width="8" height="8"/><rect x="104" y="74" width="8" height="8"/>
+          <rect x="70" y="54" width="8" height="8"/><rect x="78" y="58" width="8" height="8"/>
+        </g>
+        <!-- grass -->
+        <rect x="0" y="145" width="320" height="45" fill="#9fc78b"/>
+        <g fill="#6d9b68">
+          <rect x="14" y="151" width="8" height="8"/><rect x="32" y="165" width="8" height="8"/>
+          <rect x="120" y="156" width="8" height="8"/><rect x="146" y="171" width="8" height="8"/>
+          <rect x="278" y="153" width="8" height="8"/><rect x="300" y="168" width="8" height="8"/>
+        </g>
+        <!-- sheep shadow -->
+        <rect x="174" y="162" width="82" height="8" fill="#82ad76"/>
+        <!-- sheep wool -->
+        <g fill="#fffaf2">
+          <rect x="184" y="119" width="20" height="18"/><rect x="198" y="109" width="20" height="22"/>
+          <rect x="214" y="113" width="20" height="22"/><rect x="228" y="123" width="18" height="17"/>
+          <rect x="178" y="132" width="62" height="24"/><rect x="190" y="101" width="18" height="16"/>
+        </g>
+        <!-- sheep face and ears -->
+        <rect x="236" y="126" width="22" height="24" fill="#e6b7a4"/>
+        <rect x="250" y="132" width="8" height="8" fill="#e6b7a4"/>
+        <rect x="232" y="119" width="8" height="8" fill="#e6b7a4"/>
+        <rect x="243" y="132" width="4" height="4" fill="#45313b"/>
+        <rect x="253" y="132" width="4" height="4" fill="#45313b"/>
+        <rect x="247" y="142" width="6" height="3" fill="#c9787f"/>
+        <!-- legs -->
+        <g fill="#8a573e">
+          <rect x="188" y="153" width="8" height="16"/><rect x="208" y="153" width="8" height="16"/>
+          <rect x="230" y="153" width="8" height="16"/>
+        </g>
+        <!-- little flowers -->
+        <g fill="#fffaf2">
+          <rect x="148" y="142" width="6" height="6"/><rect x="142" y="148" width="6" height="6"/>
+          <rect x="154" y="148" width="6" height="6"/><rect x="148" y="154" width="6" height="6"/>
+          <rect x="272" y="142" width="6" height="6"/><rect x="266" y="148" width="6" height="6"/>
+          <rect x="278" y="148" width="6" height="6"/><rect x="272" y="154" width="6" height="6"/>
+        </g>
+        <g fill="#e8b94d"><rect x="148" y="148" width="6" height="6"/><rect x="272" y="148" width="6" height="6"/></g>
+      </svg>
+    </div>
+
+    <p class="message">Esto se dibuja solo si Cherry B sonríe. 🍒</p>
+
+    <div class="code-note"><span class="code-comment">// una pequeña función</span>
+<span class="code-keyword">if</span> (cherryB.smiles) {
+  draw(sheep);
+  plant(cherryTree);
+  return "😊";
+}</div>
+
+    <button id="surpriseButton" type="button">Presiona para una pequeña sorpresa ✦</button>
+    <p id="surprise" aria-live="polite"></p>
+    <p class="footer">hecho con un poquito de código y mucho cariño ♡</p>
+  </main>
+
+  <script>
+    const button = document.getElementById("surpriseButton");
+    const surprise = document.getElementById("surprise");
+
+    button.addEventListener("click", () => {
+      surprise.textContent = "Compilación exitosa: una sonrisa de Cherry B detectada. 🍒🐑";
+      for (let i = 0; i < 18; i++) {
+        const cherry = document.createElement("span");
+        cherry.className = "floating-cherry";
+        cherry.textContent = Math.random() > 0.35 ? "🍒" : "✦";
+        cherry.style.left = Math.random() * 100 + "vw";
+        cherry.style.animationDelay = Math.random() * 0.8 + "s";
+        cherry.style.fontSize = (16 + Math.random() * 16) + "px";
+        document.body.appendChild(cherry);
+        cherry.addEventListener("animationend", () => cherry.remove());
+      }
+    });
+  </script>
+</body>
+</html>
